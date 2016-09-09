@@ -1,9 +1,15 @@
+ENV['SSL_CERT_FILE'] = File.expand_path('C:\Users\backn\ca-bundle.crt')
+
 require 'socket'
 require 'json'
+require 'slack/incoming/webhooks'
+
 
 require File.dirname(__FILE__) + '/BodiesData'
 
 class Listener
+
+  slack = Slack::Incoming::Webhooks.new "https://hooks.slack.com/services/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"
 
   server = TCPServer.open(8000)
 
@@ -29,9 +35,11 @@ class Listener
 
       rescue => ex
 
-        #エラー時処理
+        #通知など
         p(ex.message)
-        # TODO 通知
+        slack.post(ex.message)
+
+        #後処理
         p(client, "接続解除")
         client.close
 

@@ -33,8 +33,8 @@ class Body
 
   def initialize(body)
     @joints =[]
-    body["Joints"].each do |joint|
-      @joints << Joint.new(joint["JointName"], joint["X"], joint["Y"], joint["Z"])
+    body.each do |joint|
+      @joints << Joint.new(joint[0], joint[1], joint[2], joint[3])
     end
   end
 
@@ -56,9 +56,9 @@ end
 class Coordinates
 
   def initialize(x, y, z)
-    @x = x
-    @y = y
-    @z = z
+    @x = x.to_f
+    @y = y.to_f
+    @z = z.to_f
   end
 
   attr_reader :x, :y, :z

@@ -1,11 +1,15 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    dotenv (2.1.1)
+    slack-incoming-webhooks (0.2.0)
 
 PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  dotenv
+  slack-incoming-webhooks
 
 BUNDLED WITH
    1.12.5

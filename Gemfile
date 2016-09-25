@@ -3,4 +3,5 @@
 source "https://rubygems.org"
 
 # gem "rails"
-gem "Slack-incoming-webhooks"
+gem 'slack-incoming-webhooks'
+gem 'dotenv'

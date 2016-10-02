@@ -10,7 +10,8 @@ class Server
 
   Dotenv.load
   slack = Slack::Incoming::Webhooks.new ENV['SLACK_URL']
-  server = TCPServer.open(8000)
+  ip = Socket.getifaddrs.select{|x| x.name == "wireless_32768" and x.addr.ipv4?}.first.addr.ip_address
+  server = TCPServer.open(ip, 8000)
 
   while true
     p("待受状態開始")
